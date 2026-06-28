@@ -8394,7 +8394,10 @@ svg {
 
 .team-choice-grid > div,
 .dungeon-nav-card-grid a,
-.farm-stat-grid > div,
+.farm-stat-grid > div {
+  display: grid;
+  gap: 4px;
+}
 .leaderboard-metrics > div,
 .dungeon-tips-grid > div {
   min-width: 0;
