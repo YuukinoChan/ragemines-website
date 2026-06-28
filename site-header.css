@@ -93,14 +93,22 @@ body.wiki-page {
   margin-right: auto;
 }
 
-.site-header .header-nav a {
+.site-header .header-nav a,
+.site-header .header-nav a:link {
   position: relative;
   color: var(--site-header-soft);
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
+  text-decoration: none;
   transition: color 180ms ease;
+}
+
+/* :visited must use a literal color — var()/custom properties are
+   not reliably applied inside :visited rules (privacy restrictions). */
+.site-header .header-nav a:visited {
+  color: #c9c0c3;
 }
 
 .site-header .header-nav a::after {
@@ -115,12 +123,17 @@ body.wiki-page {
 }
 
 .site-header .header-nav a:hover,
-.site-header .header-nav a:focus-visible {
+.site-header .header-nav a:focus-visible,
+.site-header .header-nav a:active {
   color: #fff;
 }
 
 .site-header .header-nav a.is-current {
   color: var(--site-header-red-bright);
+}
+
+.site-header .header-nav a.is-current:visited {
+  color: #ff6252;
 }
 
 .site-header .header-nav a:hover::after,
@@ -276,12 +289,20 @@ body.wiki-page {
   font-weight: 700;
 }
 
-.site-footer-nav a {
+.site-footer-nav a,
+.site-footer-nav a:link {
+  color: var(--site-header-soft);
+  text-decoration: none;
   transition: color 180ms ease;
 }
 
+.site-footer-nav a:visited {
+  color: #c9c0c3;
+}
+
 .site-footer-nav a:hover,
-.site-footer-nav a:focus-visible {
+.site-footer-nav a:focus-visible,
+.site-footer-nav a:active {
   color: #fff;
 }
 
