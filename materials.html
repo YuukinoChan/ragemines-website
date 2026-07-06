@@ -305,7 +305,8 @@
       line-height: 1.25;
       letter-spacing: 0.2px;
     }
-    .mat-name.special { color: #ddd; font-style: italic; font-family: 'Jost', sans-serif; font-weight: 600; }
+    .mat-name.special { color: #ddd; }
+    .mat-name.infused { color: #ddd; font-style: italic; font-family: 'Jost', sans-serif; font-weight: 600; }
 
 
     /* Gear breakdown row (default state) */
@@ -603,7 +604,7 @@
 
   <div class="summary">
     <span class="summary-pill"><span class="count" id="sumTotal">—</span> materials</span>
-    <span class="summary-pill"><span class="count">9</span> biomes</span>
+    <span class="summary-pill"><span class="count">11</span> biomes</span>
     <span class="summary-pill">Showing<strong id="sumShowing">—</strong></span>
   </div>
 
@@ -806,12 +807,31 @@ const BIOMES = [
       {m:'Dog Core',           armor:16,  pick:0,   sword:4,    bow:0,   tal:0,   mpc:6},
     ]
   },
+  { id:'space', name:'Space', emoji:'🪐',
+    items:[
+      {m:'Space Mud',  armor:100, pick:36, sword:36, bow:25, tal:25, mpc:25},
+      {m:'Meteorite',  armor:44,  pick:15, sword:15, bow:11, tal:13, mpc:11},
+      {m:'Starwood',   armor:28,  pick:9,  sword:9,  bow:7,  tal:7,  mpc:7},
+      {m:'Frostnova',  armor:140, pick:51, sword:51, bow:35, tal:35, mpc:35},
+      {m:'Astrorock',  armor:140, pick:51, sword:51, bow:35, tal:35, mpc:35},
+      {m:'Starforged', armor:148, pick:54, sword:54, bow:37, tal:37, mpc:37},
+      {m:'Eclipse',    armor:148, pick:54, sword:54, bow:37, tal:37, mpc:37},
+      {m:'Seagrass',   armor:28,  pick:9,  sword:9,  bow:7,  tal:7,  mpc:7},
+      {m:'Duneshard',  armor:148, pick:54, sword:54, bow:37, tal:37, mpc:37},
+      {m:'Space Poppy (Infused Space Mud)',             armor:7,  pick:3, sword:3, bow:2, tal:2, mpc:2, infused:true},
+      {m:'Space Warden Heart (Infused Meteorite)',      armor:8,  pick:3, sword:3, bow:2, tal:3, mpc:2, infused:true},
+      {m:'Space Lovers Tear (Infused Starwood)',        armor:7,  pick:3, sword:3, bow:2, tal:2, mpc:2, infused:true},
+      {m:'Space Icedrake (Infused Frostnova)',          armor:9,  pick:4, sword:4, bow:3, tal:3, mpc:3, infused:true},
+      {m:'Space Fire Core (Infused Astrorock)',         armor:9,  pick:4, sword:4, bow:3, tal:3, mpc:3, infused:true},
+      {m:'Space Abyss Core (Infused Eclipse)',          armor:10, pick:4, sword:4, bow:3, tal:3, mpc:3, infused:true},
+    ]
+  },
   { id:'magicworld', name:'Magic World', emoji:'🍄',
     items:[
-      {m:'Melon',         armor:0,   pick:48,  sword:0,    bow:0,   tal:0,   mpc:64},
+      {m:'Melon',         armor:0,   pick:48,  sword:0,    bow:0,   tal:0,   mpc:256},
       {m:'Pink Melon',    armor:0,   pick:28,  sword:0,    bow:0,   tal:0,   mpc:64},
-      {m:'Brown Mushroom',armor:0,   pick:0,   sword:0,    bow:0,   tal:0,   mpc:64},
-      {m:'Red Mushroom',  armor:0,   pick:16,  sword:0,    bow:0,   tal:0,   mpc:64},
+      {m:'Brown Mushroom',armor:0,   pick:0,   sword:0,    bow:0,   tal:0,   mpc:128},
+      {m:'Red Mushroom',  armor:0,   pick:16,  sword:0,    bow:0,   tal:0,   mpc:128},
       {m:'Magic Dirt',    armor:256, pick:78,  sword:128,  bow:0,   tal:64,  mpc:0},
       {m:'Magic Wart',    armor:16,  pick:0,   sword:8,    bow:6,   tal:4,   mpc:0},
       {m:'Magic Leaves',  armor:512, pick:0,   sword:256,  bow:56,  tal:128, mpc:0},
@@ -931,7 +951,7 @@ BIOMES.forEach(b => {
 
     card.innerHTML = `
       <div class="card-head">
-        <span class="mat-name${item.special?' special':''}">${item.m}</span>
+        <span class="mat-name${item.special?' special':''}${item.infused?' infused':''}">${item.m}</span>
       </div>
       <div class="gear-row">${cells}</div>
       ${focusBlocks}
